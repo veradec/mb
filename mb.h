@@ -18,6 +18,12 @@ bool checkForEqual(char *token) {
   }
 }
 
+bool setVariable(char *line, char *rest) {
+  printf("assigned value to **%s** to line **%s**\n", rest, line);
+
+  return true;
+}
+
 int calValues(int *x, char op, int size) {
   int res = 0;
 

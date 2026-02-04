@@ -20,7 +20,7 @@ void calc(char *argument) {
 
     buf = strtok(NULL, " ");
   }
-  printf("%d", calValues(x, op, count));
+  printf("%d\n", calValues(x, op, count));
 }
 
 void doTask(char *token, char *argument) {
@@ -42,6 +42,11 @@ void parseLine(char *line, char **keywords) {
     if (checkKeyword(line, keywords)) {
       char *rest = strtok(NULL, "");
       doTask(line, rest);
+    } else {
+      if (checkForEqual(line)) {
+        char *rest = strtok(NULL, "=");
+        setVariable(line, rest);
+      }
     }
     line = strtok(NULL, " ");
   }
@@ -49,6 +54,7 @@ void parseLine(char *line, char **keywords) {
 
 int main() {
   FILE *f = fopen("sonofindia.mb", "r");
+  // ADD WRITING TO Binaries Later.
   /* FILE *o = fopen("sonofindia.hit", "wb"); */
   char buf[256];
   char *keywords[] = {"chepparafool", "lawsuit", "choodu"};
